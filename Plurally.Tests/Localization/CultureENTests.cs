@@ -5,16 +5,16 @@ using System.Globalization;
 
 namespace Plurally.Tests
 {
-	[TestFixture]
-	public class PlurallyCulturesTests
-	{
-		[Test]
-		public void IsPluralShouldCheckNormalWords()
-		{
+    [TestFixture]
+    public class PlurallyCulturesTests
+    {
+        [Test]
+        public void IsPluralShouldCheckNormalWords()
+        {
             var plurally = new Plurally();
             Assert.AreEqual(true, plurally.IsPlural("Tests"));
             Assert.AreEqual(false, plurally.IsPlural("Test"));
-		}           
+        }           
 
         [Test]
         public void IsPluralShouldCheckSpecialSuffix()
@@ -105,6 +105,6 @@ namespace Plurally.Tests
             Assert.AreEqual("brother", plurally.Singularize("brothers"));
             Assert.AreEqual("brother", plurally.Singularize("brethren"));
         }
-	}
+    }
 }
 

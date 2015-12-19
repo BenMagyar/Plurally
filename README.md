@@ -1,7 +1,9 @@
 # Plurally - A .NET Pluralizer
 
-Plurally is a mono-compatabile replacement to the entity framework pluralization
-services.
+Plurally is a mono-compatabile replacement to the entity
+framework pluralization services. Provides methods to test if
+a word is plural or singular, and convert between plural and
+singular words.
 
 ## Methods
 

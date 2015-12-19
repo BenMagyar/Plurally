@@ -8,7 +8,7 @@ using System.Linq;
 namespace Plurally.Localization
 {
     public class LocaleEN : ILocalization
-	{
+    {
         private readonly Dictionary<string, string> SuffixRules = new Dictionary<string, string>()
         {
             { "ch",    "ches"   },
@@ -152,8 +152,8 @@ namespace Plurally.Localization
             Tuple.Create("vortex",       "vortices",     "vortexes"    )
         };
 
-		public bool IsPlural(string word)
-		{
+        public bool IsPlural(string word)
+        {
             word = word.ToLower();
             return (
                 // Check to make sure not one of our special words
@@ -169,7 +169,7 @@ namespace Plurally.Localization
                 // Match S
                 || word.EndsWith("s"))
             );
-		}
+        }
 
         public bool IsSingular(string word)
         {
@@ -269,6 +269,6 @@ namespace Plurally.Localization
             else
                 return target.ToLowerInvariant();
         }
-	}
+    }
 }
 

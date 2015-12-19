@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Plurally</id>
+    <version>0.0.0.1</version>
+    <title>Plurally - A .NET Pluralizer</title>
+    <authors>Ben Magyar</authors>
+    <owners>Ben Magyar</owners>
+    <licenseUrl>https://raw.githubusercontent.com/BenMagyar/Plurally/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BenMagyar/Plurally</projectUrl>
+    <iconUrl>http://noIcon</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Plurally is a mono-compatabile replacement to the entity
+      framework pluralization services. Provides methods to test if
+      a word is plural or singular, and convert between plural and
+      singular words.
+    </description>
+    <releaseNotes>Initial Release.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>Plural Singular Pluralization Language Culture</tags>
+  </metadata>
+</package>

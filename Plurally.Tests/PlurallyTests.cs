@@ -4,9 +4,9 @@ using System.Globalization;
 
 namespace Plurally.Tests
 {
-	[TestFixture]
-	public class PlurallyTests
-	{
+    [TestFixture]
+    public class PlurallyTests
+    {
         [Test]
         public void PlurallyShouldThrowNotSupportedForUnassignedLocales()
         {
@@ -16,9 +16,9 @@ namespace Plurally.Tests
             });
         }
 
-		[Test]
-		public void PlurallyShouldUseSameEnglishLocaleForAll()
-		{
+        [Test]
+        public void PlurallyShouldUseSameEnglishLocaleForAll()
+        {
             var plurallyGB = new Plurally(new CultureInfo(2057));
             var plurallyUS = new Plurally(new CultureInfo(1033));
 
@@ -28,7 +28,7 @@ namespace Plurally.Tests
 
             // Same results for English
             Assert.AreEqual(pluralGB, pluralUS);
-		}
-	}
+        }
+    }
 }
 
