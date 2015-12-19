@@ -90,6 +90,21 @@ namespace Plurally.Tests
             var plurally = new Plurally();
             Assert.AreEqual("Test", plurally.Singularize("Tests"));
         }
+
+        [Test]
+        public void SingularizeShouldCheckUnusualWords()
+        {
+            var plurally = new Plurally();
+            Assert.AreEqual("homework", plurally.Singularize("homework"));
+        }
+
+        [Test]
+        public void SingularizeShouldCheckSpecialWords()
+        {
+            var plurally = new Plurally();
+            Assert.AreEqual("brother", plurally.Singularize("brothers"));
+            Assert.AreEqual("brother", plurally.Singularize("brethren"));
+        }
 	}
 }
 

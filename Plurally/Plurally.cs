@@ -24,7 +24,12 @@ namespace Plurally
         // Current support limited to English
         private ILocalization GetLocalizedLanguage()
         {
-            return new LocaleEN();
+            // Culture Identifiers can be found here
+            // https://msdn.microsoft.com/en-us/goglobal/bb896001.aspx
+            if (_cultureInfo.TwoLetterISOLanguageName == "en")
+                return new LocaleEN();
+            throw new NotSupportedException(
+                string.Format("{0} is Not Currently Supported", _cultureInfo.DisplayName));
         }
 
 		/// <summary>
