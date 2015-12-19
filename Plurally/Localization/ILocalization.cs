@@ -4,12 +4,10 @@ namespace Plurally.Localization
 {
     public interface ILocalization
     {
-        /// <summary>
-        /// If word is plural
-        /// </summary>
-        /// <returns><c>true</c>, if word is plural, <c>false</c> otherwise.</returns>
-        /// <param name="word">A Word.</param>
-        bool IsPlural(string word);
-    }
+        bool IsPlural(string word);       
+        bool IsSingular(string word);
+        string Pluralize(string word);
+        string Singularize(string word);
+    }       
 }
 

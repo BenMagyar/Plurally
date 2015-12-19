@@ -154,7 +154,7 @@ namespace Plurally.Localization
 
 		public bool IsPlural(string word)
 		{
-            word = word.ToLowerInvariant();
+            word = word.ToLower();
             return (
                 // Check to make sure not one of our special words
                 !SpecialWords.Any(w => w.Item1 == word && w.Item2 != word && w.Item3 != word)
@@ -165,7 +165,7 @@ namespace Plurally.Localization
                 // Check if suffix matches
                 || SuffixRules.Values
                     .Where(s => word.Length >= s.Length)
-                    .Any(s => word.Substring(0, s.Length) == s)
+                    .Any(s => word.Substring(word.Length - s.Length, s.Length) == s)
                 // Match S
                 || word.EndsWith("s"))
             );
@@ -173,7 +173,101 @@ namespace Plurally.Localization
 
         public bool IsSingular(string word)
         {
-            throw new NotImplementedException();
+            word = word.ToLower();
+            return (
+                // Check not a special word plural
+                !SpecialWords.Any(w => w.Item2 == word || w.Item3 == word)
+                // Check if a special word
+                && (SpecialWords.Any(w => w.Item1 == word)
+                // Check if an unusual singular
+                || UnusualWords.Any(w => w == word)
+                // Check if a suffix
+                || SuffixRules.Keys
+                    .Where(s => word.Length >= s.Length)
+                    .Any(s => word.Substring(0, s.Length) == s)
+                // Match Not S
+                || !word.EndsWith("s"))
+            );
+        }
+
+        public string Pluralize(string word)
+        {
+            // Plural? Ok.
+            if (IsPlural(word)) return word;
+            var lowerWord = word.ToLower();
+            // Check if a special word
+            var specialMatch = SpecialWords.Find(w => w.Item1 == lowerWord);
+            if (specialMatch != null)
+                return MaintainCasing(word, specialMatch.Item2);
+            // Check if an unusual word
+            var unusualMatch = UnusualWords.Find(w => w == word);
+            if (unusualMatch != null)
+                return word;
+            // Check if suffix rule match
+            var suffixMatch = SuffixRules.Keys
+                .Where(s => word.Length >= s.Length 
+                    && word.Substring(word.Length - s.Length, s.Length) == s)
+                .FirstOrDefault();
+            if (suffixMatch != null)
+            {
+                var singular = word.Substring(word.Length - suffixMatch.Length) + SuffixRules[suffixMatch];
+                return MaintainCasing(word, singular);
+            }
+            // Otherwise return our s
+            return MaintainCasing(word, word + "s");
+        }
+
+        public string Singularize(string word)
+        {
+            //Singular? Ok.
+            if (IsSingular(word)) return word;
+            var lowerWord = word.ToLower();
+            // Check if a special word
+            var specialMatch = SpecialWords.Find(w => w.Item2 == lowerWord || w.Item3 == lowerWord);
+            if (specialMatch != null)
+                return MaintainCasing(word, specialMatch.Item1);
+            // Check if an unusual word
+            var unusualMatch = UnusualWords.Find(w => w == word);
+            if (unusualMatch != null)
+                return word;
+            // Check for the suffix matches
+            var suffixMatch = SuffixRules.Values
+                .Where(s => word.Length >= s.Length
+                    && word.Substring(word.Length - s.Length, s.Length) == s)
+                .FirstOrDefault();
+            if (suffixMatch != null)
+            {
+                var singularSuffix = SuffixRules.Where(kv => kv.Value == suffixMatch).First();
+                var singular = word.Substring(word.Length - suffixMatch.Length) + singularSuffix;
+                return MaintainCasing(word, singular);
+            }
+            // If its an "s" at the end just remove it
+            if (word.EndsWith("s")) return MaintainCasing(word, word.Substring(0, word.Length - 1));
+            // Otherwise we give up
+            return word;
+        }
+
+        /// <summary>
+        /// Maintains the casing.
+        /// </summary>
+        /// <returns>The target word with the same casing as the source.</returns>
+        /// <param name="source">Source Word.</param>
+        /// <param name="target">Target Word.</param>
+        private string MaintainCasing(string source, string target)
+        {
+            var letters = source.ToCharArray();
+            // Uppercase => Uppercase 
+            if (letters.All(c => Char.IsUpper(c)))
+                return target.ToUpperInvariant();
+            // Lowercase => Lowercase
+            else if (letters.All(c => Char.IsLower(c)))
+                return target.ToLowerInvariant();
+            // Capitalized => Capitalzied
+            else if (Char.IsUpper(letters.First()))
+                return target.Substring(0, 1).ToUpperInvariant() + target.Substring(1, target.Length - 1);
+            // Give up and return lower
+            else
+                return target.ToLowerInvariant();
         }
 	}
 }

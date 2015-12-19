@@ -4,11 +4,11 @@ using System;
 namespace Plurally.Tests
 {
 	[TestFixture]
-	public class Test
+	public class PlurallyTests
 	{
 		[Test]
-		public void TestCase ()
-		{
+		public void PlurallyShouldAllowForDifferentCultures()
+		{            
 		}
 	}
 }
