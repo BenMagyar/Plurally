@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Plurally</id>
-    <version>0.0.0.1</version>
+    <version>$version$</version>
     <title>Plurally - A .NET Pluralizer</title>
     <authors>Ben Magyar</authors>
     <owners>Ben Magyar</owners>
