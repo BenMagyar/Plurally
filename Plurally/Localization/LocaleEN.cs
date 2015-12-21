@@ -196,11 +196,12 @@ namespace Plurally.Localization
             if (IsPlural(word)) return word;
             var lowerWord = word.ToLower();
             // Check if a special word
-            var specialMatch = SpecialWords.Find(w => w.Item1 == lowerWord);
+            var specialMatch = SpecialWords.Where(w => w.Item1 == lowerWord)
+                .FirstOrDefault();
             if (specialMatch != null)
                 return MaintainCasing(word, specialMatch.Item2);
             // Check if an unusual word
-            var unusualMatch = UnusualWords.Find(w => w == word);
+            var unusualMatch = UnusualWords.Where(w => w == word).FirstOrDefault();
             if (unusualMatch != null)
                 return word;
             // Check if suffix rule match
@@ -223,11 +224,12 @@ namespace Plurally.Localization
             if (IsSingular(word)) return word;
             var lowerWord = word.ToLower();
             // Check if a special word
-            var specialMatch = SpecialWords.Find(w => w.Item2 == lowerWord || w.Item3 == lowerWord);
+            var specialMatch = SpecialWords.Where(w => w.Item2 == lowerWord || w.Item3 == lowerWord)
+                .FirstOrDefault();
             if (specialMatch != null)
                 return MaintainCasing(word, specialMatch.Item1);
             // Check if an unusual word
-            var unusualMatch = UnusualWords.Find(w => w == word);
+            var unusualMatch = UnusualWords.Where(w => w == word).FirstOrDefault();
             if (unusualMatch != null)
                 return word;
             // Check for the suffix matches
