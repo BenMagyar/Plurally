@@ -1,4 +1,5 @@
 # Plurally - A .NET Pluralizer
+[![Build status](https://ci.appveyor.com/api/projects/status/j556mxsqrim1fxd9?svg=true)](https://ci.appveyor.com/project/BenMagyar/plurally)
 
 Plurally is a mono-compatabile replacement to the entity
 framework pluralization services. Provides methods to test if
