@@ -8,21 +8,21 @@ singular words.
 
 ## Methods
 
-### Plurally([optional] CultureInfo)
+### Pluralizer([optional] CultureInfo)
 The constructor accepts an optional `CultureInfo` type during initialization. If
 no `CultureInfo` is supplied, Plurally will default to `CultureInfo.CurrentCulture`.
 
 ### IsPlural(string word)
 Determines if the specified word is plural.
 ```
-new Plurally().IsPlural("Pluralizers")
+new Pluralizer().IsPlural("Pluralizers")
 >> True
 ```
 
 ### IsSingular(string word)
 Determines if the specified word is singular.
 ```
-new Plurally().IsSingular("Pluralizer")
+new Pluralizer().IsSingular("Pluralizer")
 >> True
 ```
 
@@ -30,7 +30,7 @@ new Plurally().IsSingular("Pluralizer")
 Pluralize the specified word. If a word is already plural it will be returned.
 Case will be (attempted) maintained.
 ```
-new Plurally().Pluralize("Pluralizer")
+new Pluralizer().Pluralize("Pluralizer")
 >> "Pluralizers"
 ```
 
@@ -38,7 +38,7 @@ new Plurally().Pluralize("Pluralizer")
 Singularize the specified word. If a word is already singular it will be returned.
 Case will be (attempted) maintained.
 ```
-new Plurally().Pluralize("Pluralizers")
+new Pluralizer().Pluralize("Pluralizers")
 >> "Pluralizer"
 ```
 

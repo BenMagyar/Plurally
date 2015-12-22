@@ -5,22 +5,22 @@ using System.Globalization;
 namespace Plurally.Tests
 {
     [TestFixture]
-    public class PlurallyTests
+    public class PluralizerTests
     {
         [Test]
         public void PlurallyShouldThrowNotSupportedForUnassignedLocales()
         {
             Assert.Catch(() =>
             {
-                new Plurally(new CultureInfo(23));
+                new Pluralizer(new CultureInfo(23));
             });
         }
 
         [Test]
         public void PlurallyShouldUseSameEnglishLocaleForAll()
         {
-            var plurallyGB = new Plurally(new CultureInfo(2057));
-            var plurallyUS = new Plurally(new CultureInfo(1033));
+            var plurallyGB = new Pluralizer(new CultureInfo(2057));
+            var plurallyUS = new Pluralizer(new CultureInfo(1033));
 
             // Assert the results are the same on the pluralization
             var pluralGB = plurallyGB.Pluralize("test");

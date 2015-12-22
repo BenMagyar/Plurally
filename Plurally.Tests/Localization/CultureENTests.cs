@@ -11,7 +11,7 @@ namespace Plurally.Tests
         [Test]
         public void IsPluralShouldCheckNormalWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual(true, plurally.IsPlural("Tests"));
             Assert.AreEqual(false, plurally.IsPlural("Test"));
         }           
@@ -19,14 +19,14 @@ namespace Plurally.Tests
         [Test]
         public void IsPluralShouldCheckSpecialSuffix()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual(true, plurally.IsPlural("elves"));
         }           
 
         [Test]
         public void IsPluralShouldCheckSpecialWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual(true, plurally.IsPlural("brothers"));
             Assert.AreEqual(true, plurally.IsPlural("brethren"));
             Assert.AreEqual(false, plurally.IsPlural("brother"));
@@ -35,14 +35,14 @@ namespace Plurally.Tests
         [Test]
         public void IsPluralShouldCheckUnusualWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual(true, plurally.IsPlural("homework"));
         }
 
         [Test]
         public void IsSingularShouldCheckNormalWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual(true, plurally.IsSingular("test"));
             Assert.AreEqual(false, plurally.IsSingular("tests"));
         }
@@ -50,14 +50,14 @@ namespace Plurally.Tests
         [Test]
         public void IsSingularShouldCheckSpecialSuffix()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual(true, plurally.IsSingular("chess"));
         }
 
         [Test]
         public void IsSingularShouldCheckSpecialWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual(true, plurally.IsSingular("Brother"));
             Assert.AreEqual(false, plurally.IsSingular("brethren"));
             Assert.AreEqual(false, plurally.IsSingular("brothers"));
@@ -66,42 +66,42 @@ namespace Plurally.Tests
         [Test]
         public void PluralizeShouldAddSToNormalWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual("Tests", plurally.Pluralize("Test"));
         }
 
         [Test]
         public void PluralizeShouldCheckUnusualWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual("Homework", plurally.Pluralize("Homework"));
         }
 
         [Test]
         public void PluralizeShouldCheckSpecialWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual("BROTHERS", plurally.Pluralize("BROTHER"));
         }
 
         [Test]
         public void SingularizeShouldRemoveSFromNormalWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual("Test", plurally.Singularize("Tests"));
         }
 
         [Test]
         public void SingularizeShouldCheckUnusualWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual("homework", plurally.Singularize("homework"));
         }
 
         [Test]
         public void SingularizeShouldCheckSpecialWords()
         {
-            var plurally = new Plurally();
+            var plurally = new Pluralizer();
             Assert.AreEqual("brother", plurally.Singularize("brothers"));
             Assert.AreEqual("brother", plurally.Singularize("brethren"));
         }

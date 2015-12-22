@@ -5,7 +5,7 @@ namespace Plurally
 {
     using Localization;
 
-    public class Plurally
+    public class Pluralizer
     {
         private readonly CultureInfo _cultureInfo;
         private readonly ILocalization _localization;
@@ -14,7 +14,7 @@ namespace Plurally
         /// Initializes a new instance of the <see cref="Plurally.PlurallyPlease"/> class.
         /// </summary>
         /// <param name="cultureInfo">Optional Culture Info. Defaults to the current culture</param>
-        public Plurally(CultureInfo cultureInfo = null)
+        public Pluralizer(CultureInfo cultureInfo = null)
         {           
             _cultureInfo = cultureInfo ?? CultureInfo.CurrentCulture;
             // Get our localized setup... into a switch for now

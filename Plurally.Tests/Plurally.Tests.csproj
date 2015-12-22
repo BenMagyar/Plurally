@@ -35,7 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Localization\CultureENTests.cs" />
-    <Compile Include="PlurallyTests.cs" />
+    <Compile Include="PluralizerTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
