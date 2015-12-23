@@ -64,6 +64,13 @@ namespace Plurally.Tests
         }
 
         [Test]
+        public void PluralizeShouldCheckSuffixes()
+        {
+            var plurally = new Pluralizer();
+            Assert.AreEqual("Companies", plurally.Pluralize("Company"));
+        }
+
+        [Test]
         public void PluralizeShouldAddSToNormalWords()
         {
             var plurally = new Pluralizer();
@@ -96,6 +103,13 @@ namespace Plurally.Tests
         {
             var plurally = new Pluralizer();
             Assert.AreEqual("homework", plurally.Singularize("homework"));
+        }
+
+        [Test]
+        public void SingularizeShouldCheckSuffixes()
+        {
+            var plurally = new Pluralizer();
+            Assert.AreEqual("Company", plurally.Singularize("Companies"));
         }
 
         [Test]

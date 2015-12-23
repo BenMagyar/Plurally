@@ -211,7 +211,7 @@ namespace Plurally.Localization
                 .FirstOrDefault();
             if (suffixMatch != null)
             {
-                var singular = word.Substring(word.Length - suffixMatch.Length) + SuffixRules[suffixMatch];
+                var singular = word.Substring(0, word.Length - suffixMatch.Length) + SuffixRules[suffixMatch];
                 return MaintainCasing(word, singular);
             }
             // Otherwise return our s
@@ -240,7 +240,7 @@ namespace Plurally.Localization
             if (suffixMatch != null)
             {
                 var singularSuffix = SuffixRules.Where(kv => kv.Value == suffixMatch).First();
-                var singular = word.Substring(word.Length - suffixMatch.Length) + singularSuffix;
+                var singular = word.Substring(0, word.Length - suffixMatch.Length) + singularSuffix.Key;
                 return MaintainCasing(word, singular);
             }
             // If its an "s" at the end just remove it
