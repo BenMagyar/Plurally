@@ -184,7 +184,7 @@ namespace Plurally.Localization
                 // Check if a suffix
                 || SuffixRules.Keys
                     .Where(s => word.Length >= s.Length)
-                    .Any(s => word.Substring(0, s.Length) == s)
+                    .Any(s => word.Substring(word.Length - s.Length, s.Length) == s)
                 // Match Not S
                 || !word.EndsWith("s"))
             );
