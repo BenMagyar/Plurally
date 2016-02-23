@@ -244,7 +244,7 @@ namespace Plurally.Localization
                 return MaintainCasing(word, singular);
             }
             // If its an "s" at the end just remove it
-            if (word.EndsWith("s")) return MaintainCasing(word, word.Substring(0, word.Length - 1));
+            if (word.EndsWith("s", StringComparison.OrdinalIgnoreCase)) return MaintainCasing(word, word.Substring(0, word.Length - 1));
             // Otherwise we give up
             return word;
         }

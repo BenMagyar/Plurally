@@ -96,6 +96,7 @@ namespace Plurally.Tests
         {
             var plurally = new Pluralizer();
             Assert.AreEqual("Test", plurally.Singularize("Tests"));
+            Assert.AreEqual("test", plurally.Singularize("testS"));
         }
 
         [Test]
@@ -110,7 +111,7 @@ namespace Plurally.Tests
         {
             var plurally = new Pluralizer();
             Assert.AreEqual("Company", plurally.Singularize("Companies"));
-        }
+        }           
 
         [Test]
         public void SingularizeShouldCheckSpecialWords()
@@ -118,7 +119,7 @@ namespace Plurally.Tests
             var plurally = new Pluralizer();
             Assert.AreEqual("brother", plurally.Singularize("brothers"));
             Assert.AreEqual("brother", plurally.Singularize("brethren"));
-        }
+        }            
     }
 }
 
